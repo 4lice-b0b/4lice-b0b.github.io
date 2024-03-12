@@ -127,8 +127,8 @@
 fetch('https://api.leafone.cn/api/lishi')
     .then(response => response.json())
     .then(data => {
-	const randomIndex = Math.floor(Math.random() * data.data.list.length);
-        document.getElementById("broad").innerHTML = data.data.list[randomIndex].title;
+	//const randomIndex = Math.floor(Math.random() * data.data.list.length);
+        document.getElementById("broad").innerHTML = data.data.list[0].title;
         
     })
     .catch(console.error);
