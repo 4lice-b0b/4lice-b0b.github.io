@@ -110,33 +110,26 @@
   
 
 <div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
+    <!--<i class="ri-heart-fill"></i>-->
+	📜历史上的今天：
     <div class="notice-content" id="broad"></div>
 </div>
 <script type="text/javascript">
 /*
-    fetch('https://v1.hitokoto.cn')
+    fetch('https://v1.hitokoto.cn')   		//旧
         .then(response => response.json())
         .then(data => {
             document.getElementById("broad").innerHTML = data.hitokoto;
         })
         .catch(console.error)
 */       
-    fetch('https://api.jisuapi.com/todayhistory/query?appkey=your_api_key&date=3/12')
+
+fetch('https://api.leafone.cn/api/lishi')
     .then(response => response.json())
     .then(data => {
-        if (data.status === "0") {
-            const events = data.result;
-            const eventList = document.getElementById("event-list");
-            eventList.innerHTML = ""; // 清空之前的内容
-            events.forEach(event => {
-                const listItem = document.createElement("li");
-                listItem.textContent = event.title + " - " + event.year;
-                eventList.appendChild(listItem);
-            });
-        } else {
-            console.error("Error fetching historical events:", data.msg);
-        }
+	const randomIndex = Math.floor(Math.random() * data.data.list.length);
+        document.getElementById("broad").innerHTML = data.data.list[randomIndex].title;
+        
     })
     .catch(console.error);
 
